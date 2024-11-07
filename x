@@ -607,7 +607,7 @@ end)
 
 
 if getgenv().Settings.UIConfigurations.DisplayIntro then
-    local soundId = "rbxassetid://1836789629"  -- Replace with your desired sound asset ID
+    local soundId = "rbxassetid://1843761764"  -- Replace with your desired sound asset ID
     local ImageIdfr = "rbxassetid://13903798344"  -- Corrected decal asset ID
 
     -- Load the sound
