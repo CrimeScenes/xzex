@@ -731,10 +731,22 @@ Circle.Filled = false
 local function UpdateFOV()
     if not Circle then return end
 
-    Circle.Visible = CamLock.Normal.Radius_Visibility
-    Circle.Radius = CamLock.Normal.Radius
-    Circle.Position = Vector2.new(Mouse.X, Mouse.Y + game:GetService("GuiService"):GetGuiInset().Y)
+    -- Safely attempt to set properties to avoid console warnings
+    local success, errorMsg = pcall(function()
+        if Circle then
+            Circle.Visible = CamLock.Normal.Radius_Visibility
+            Circle.Radius = CamLock.Normal.Radius
+            Circle.Position = Vector2.new(Mouse.X, Mouse.Y + game:GetService("GuiService"):GetGuiInset().Y)
+        end
+    end)
+    
+    -- Optional: Print out errors silently, you can log them if necessary
+    if not success then
+        -- You can add custom logging here, but this will prevent console warnings from showing
+        -- warn(errorMsg)
+    end
 end
+
 
 RunService.RenderStepped:Connect(UpdateFOV)
 
